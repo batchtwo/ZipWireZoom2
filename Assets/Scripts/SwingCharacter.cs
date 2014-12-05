@@ -27,7 +27,7 @@ public class SwingCharacter : MonoBehaviour
 		Rotation = Mathf.Clamp(Rotation, -100f, 100f);
 
 		//Apply rotation
-		transform.localEulerAngles = new Vector3(0, 0, Rotation);
+		transform.localEulerAngles = new Vector3(0, Rotation/4, Rotation);
 	}
 
 }
