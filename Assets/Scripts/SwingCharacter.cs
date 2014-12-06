@@ -3,8 +3,13 @@ using System.Collections;
 
 public class SwingCharacter : MonoBehaviour 
 {
-	private float Rotation;
-	public float SwingSpeed = 8f;
+	// Controlling the character swing
+	// Pivot must be set to the top of the swing rope
+
+	// Change for a more reactive swing
+	public float swingSpeed = 8f;
+
+	private float rotation;
 
 	void Update()
 	{
@@ -14,20 +19,21 @@ public class SwingCharacter : MonoBehaviour
 
 	void GetUserInputs()
 	{
-		Rotation += Input.GetAxis("Horizontal") * SwingSpeed;
+		// Rotation is simply the horizontal axis, so arrows keys or A & D
+		rotation += Input.GetAxis("Horizontal") * swingSpeed;
 	}
 
 	void ApplyRotation()
 	{
-		// Lerp back to original position
-		if (Rotation != 0)
-			Rotation = Mathf.Lerp(Rotation, 0f, 6f * Time.deltaTime);
+		// Always lerp back to original position
+		if (rotation != 0)
+			rotation = Mathf.Lerp(rotation, 0f, 6f * Time.deltaTime);
 
 		// Clamp rotation to sides
-		Rotation = Mathf.Clamp(Rotation, -100f, 100f);
+		rotation = Mathf.Clamp(rotation, -100f, 100f);
 
 		//Apply rotation
-		transform.localEulerAngles = new Vector3(0, Rotation/4, Rotation);
+		transform.localEulerAngles = new Vector3(36f, rotation/2, rotation);
 	}
 
 }

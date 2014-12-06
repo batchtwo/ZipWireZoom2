@@ -7,11 +7,20 @@
 
      SubShader 
      {
+        Lighting Off
+        Cull Off
      	Tags { "RenderType"="Opaque" }
      	LOD 200
 
      	CGPROGRAM
-        #pragma surface surf Lambert vertex:vert addshadow
+        #pragma surface surf Lambert vertex:vert addshadow 
+
+        half4 LightingUnlit (SurfaceOutput s, half3 lightDir, half atten) {
+            half4 c;
+            c.rgb = s.Albedo;
+            c.a = s.Alpha;
+            return c;
+        }
 
         uniform float _Curvature;
 
@@ -19,6 +28,7 @@
         {
             float4 color: Color; // vertex color
         };
+
 
         // Apply curvature
         void vert( inout appdata_full v)

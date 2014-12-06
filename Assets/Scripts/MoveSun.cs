@@ -8,6 +8,9 @@ public class MoveSun : MonoBehaviour
 
 	void Update()
 	{
+		// Spherically interpolate between the two positions as the sun sets
+		// Based on time of day found in ScoreManager
+		
 		transform.position = Vector3.Slerp(endPos, startPos, ScoreManager.timeOfDay);
 	}
 }

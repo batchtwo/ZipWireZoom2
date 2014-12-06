@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: BackgroundGradient
-  m_Shader: {fileID: 4800000, guid: ecea28d5228d941e9ad4ddb22d42f43c, type: 3}
+  m_Shader: {fileID: 4800000, guid: 78fc5ff75b1ea47fd8fe97aa746883b7, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
