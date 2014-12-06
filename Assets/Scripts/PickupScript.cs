@@ -19,7 +19,8 @@ public class PickupScript : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			ScoreManager.score += 1;
+			ScoreManager.timeOfDay += 0.03f;
+			// ScoreManager.score += 1;
 			Destroy(gameObject, 0f);
 		}
 	}

@@ -9,14 +9,34 @@ public class Gradient : MonoBehaviour
 	public Color topColor;
 	public Color bottomColor;
 
+	public Color topSunsetColor;
+	public Color bottomSunsetColor;
+
+	Mesh mesh;
+	Color[] colors;
+
 	void Start()
 	{
-		Mesh mesh = GetComponent <MeshFilter> ().mesh;
-		Color[] colors = new Color[mesh.vertices.Length];
+		mesh = GetComponent <MeshFilter> ().mesh;
+		colors = new Color[mesh.vertices.Length];
+
 		colors[0] = bottomColor;
 		colors[1] = topColor;
 		colors[2] = bottomColor;
 		colors[3] = topColor;
+
+		mesh.colors = colors;
+	}
+
+	void Update()
+	{
+		Color lerpedColorTop = Color.Lerp(topSunsetColor, topColor, ScoreManager.timeOfDay);
+		Color lerpedColorBottom = Color.Lerp(bottomSunsetColor, bottomColor, ScoreManager.timeOfDay);
+
+		colors[0] = lerpedColorBottom;
+		colors[1] = lerpedColorTop;
+		colors[2] = lerpedColorBottom;
+		colors[3] = lerpedColorTop;
 
 		mesh.colors = colors;
 	}
