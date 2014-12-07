@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MoveProp : MonoBehaviour 
 {
-
 	void Update()
 	{
 		// Move prop towards player

@@ -3,6 +3,11 @@ using System.Collections;
 
 public class SpecialPickup : MonoBehaviour 
 {
+	// Script for the special pickup
+	// Consider making this inherit from regular pickup
+	// Or both inherit from a generic pickup
+	// As they both have similar methods and structure
+
 	// Variables to make the pickup a public event, to trigger a speed boost in MoveWorld
 	public delegate void PickupAction();
 	public static event PickupAction OnPickup;
@@ -35,7 +40,7 @@ public class SpecialPickup : MonoBehaviour
 	// If player grabs pickup we:
 	// Invoke the pickup event which will broadcast to MoveWorld
 	// Increase time of day
-	// Destroy the object
+	// Hide the object
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player")
@@ -49,7 +54,6 @@ public class SpecialPickup : MonoBehaviour
 			ScoreManager.timeOfDay += 0.2f;
 
 			meshRenderer.enabled = false;
-			// Destroy(gameObject, 0f);
 		}
 	}
 

@@ -3,22 +3,23 @@ using System.Collections;
 
 public class GameOverManager : MonoBehaviour 
 {
-	// public float restartDelay = 0.2f;
 	public GameObject screenFade;
 	public GameObject gameOverScreen;
 	public GameObject gameOverText;
 	public GameObject againTexture;
 
 	private ScreenFadeInOut screenFadeInOut;
+	private GUITexture gameOverTexture;
 
-	// private float restartTimer;
 	public static bool gameOver;
 
 	void Awake()
 	{
 		gameOver = false;
+		// Set these values in awake rather than when need
+		// More robust, may cause issues finding them at run time
 		screenFadeInOut = screenFade.GetComponent <ScreenFadeInOut> ();
-		// restartTimer = 1f;
+		gameOverTexture = gameOverScreen.GetComponent <GUITexture> ();
 	}
 
 	void Update()
@@ -27,12 +28,12 @@ public class GameOverManager : MonoBehaviour
 		if (ScoreManager.timeOfDay <= 0f)
 		{
 			gameOver = true;
-			// restartTimer += Time.deltaTime;
 			MoveWorld.MoveSpeed = 0f;
 
 			// Fade in the background fader and the gameover image
-			screenFadeInOut.EndScene();
-			screenFadeInOut.FadeIn(gameOverScreen.GetComponent<GUITexture>());
+			screenFadeInOut.sceneEnding = true;
+			// screenFadeInOut.EndScene();
+			screenFadeInOut.FadeIn(gameOverTexture);
 
 			// Set the end score text
 			GUIText endText = gameOverText.GetComponent<GUIText>();

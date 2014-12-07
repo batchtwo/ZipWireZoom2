@@ -22,6 +22,7 @@ public class MoveWorld : MonoBehaviour
 
 	void Awake()
 	{
+		// Clear the list because list is static so may not refresh
 		Tiles.Clear();
 		// Initialise the correct order of tiles
 		Tiles.Add(GameObject.Find("Sea2").transform);
@@ -31,6 +32,7 @@ public class MoveWorld : MonoBehaviour
 
 	void Start()
 	{
+		// Initialise
 		MoveSpeed = 15f;
 	}
 

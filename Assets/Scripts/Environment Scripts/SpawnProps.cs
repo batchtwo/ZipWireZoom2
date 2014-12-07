@@ -31,7 +31,7 @@ public class SpawnProps : MonoBehaviour
 			// Max is exclusive to range goes to 2
 			int randomSpawnIndex = (Random.Range(0,2));
 
-			// Tenary. Get a plus or minus depending on prop being left or right
+			// Ternary. Get a plus or minus depending on prop being left or right
 			// This will be multiplied by the x location to position it correctly
 			// left is 1 right is -1
 			int leftOrRight = randomSpawnIndex > 0 ? -1 : 1;

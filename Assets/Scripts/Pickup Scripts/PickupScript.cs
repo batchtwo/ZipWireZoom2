@@ -6,7 +6,7 @@ public class PickupScript : MonoBehaviour
 	// Script for the standard pickup objects
 	// Will simply update the z to move towards camera at a rate set by MoveWorld
 	// Destroy the object if out of view
-	// Destroy object and increase time of day if trigger is hit by player
+	// Hide the object's meshRenderer, play the sound and increase time of day if trigger is hit by player
 
 	private AudioSource pickupAudio;
 	private MeshRenderer meshRenderer;

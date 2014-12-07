@@ -15,19 +15,40 @@ public class SpawnPickups : MonoBehaviour
 	// Special collectible to speed up game
 	public GameObject Special;
 
+	private float timer = 0f;
+
 	// Possible locations of special collectible
 	private Vector3[] Locations = new Vector3[3];
 
 	void Start()
 	{
 		// Constantly spawn collectibles every timeBetweenSpawns seconds
-		InvokeRepeating("Spawn", 0f, timeBetweenSpawns);
-		InvokeRepeating("SpawnSpecial", timeBetweenSpawns, timeBetweenSpawns);
+		// Better way of doing this: every time interval.
+		// Reset a time after so many seconds.
 
 		// Hardcoded locations for the special collectable, just middle, left and right.
 		Locations[0] = new Vector3(0f, 3.2f, 50f);
 		Locations[1] = new Vector3(-2.8f, 4.5f, 50f);
 		Locations[2] = new Vector3(2.8f, 4.5f, 50f);
+	}
+
+	void Update()
+	{
+		timer += Time.deltaTime;
+
+		// Was using invokeRepeating but this is better
+		// More control, can make time gaps more/less frequent
+		if (timer >= timeBetweenSpawns)
+		{
+			Spawn();
+			timer = 0f;
+
+			// Call the special pickup here.
+			// Could have it's own timer though
+			// Chance in that method so won't be every time
+			Invoke("SpawnSpecial", timeBetweenSpawns/2f);
+		}
+
 	}
 
 	// Choose a random prefab from the array and instantiate it in the original position
@@ -49,7 +70,7 @@ public class SpawnPickups : MonoBehaviour
 		if (!GameOverManager.gameOver)
 		{
 			// Change seconds number to get less likely spawns
-			int rand = Random.Range(0,5);
+			int rand = Random.Range(0,4);
 
 			// Spawn the object in one of the locations
 			if(rand == 1)
