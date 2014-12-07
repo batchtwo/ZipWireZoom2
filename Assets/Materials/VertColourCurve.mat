@@ -24,7 +24,7 @@ Material:
       data:
         first:
           name: _Curvature
-        second: .00999999978
+        second: .00700000022
       data:
         first:
           name: _Brightness
