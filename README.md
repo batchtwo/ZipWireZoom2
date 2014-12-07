@@ -1,5 +1,4 @@
-Zip Wire Zoom 2:
-George of the Jungle edition
+Zip Wire Zoom 2  George of the Jungle edition
 ============
 
 Recreation of some Zip Wire Zoom features.
